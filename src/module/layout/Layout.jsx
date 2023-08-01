@@ -31,7 +31,7 @@ export const Layout = ({ children }) => {
                 }}>
                 <img src="/logo.png" alt="logo"
                     style={{
-                        width: '280px',
+                        width: '300px',
                         marginTop: '-15px',
                         filter: 'grayscale(100%) brightness(0%)',
                     }}
@@ -45,7 +45,7 @@ export const Layout = ({ children }) => {
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
                     }}>
-                    <Typography variant="h1" color="white">Buscador de usuarios</Typography>
+                    <Typography variant="h1" color="white" sx={{ fontWeight: 'bold' }}>Buscador de usuarios</Typography>
                     <Box
                         width="100%"
                         display="flex"
@@ -55,18 +55,16 @@ export const Layout = ({ children }) => {
                         sx={{ cursor: 'pointer', userSelect: 'none', }}
                     >
                         <InputBase
-                            placeholder="Buscar usuarios..."
+                            placeholder="Buscar..."
                             sx={{ ml: 1, flex: 1, color: "white", fontSize: '18px', }}
                         />
                         <IconButton type="button" sx={{ p: 1 }}>
                             <SearchIcon sx={{ color: 'white' }} />
                         </IconButton>
                     </Box>
-
-
                 </Box>
 
-                <Box width='280px' textAlign="center">
+                <Box width='300px' textAlign="center">
                     <Typography variant="h6" sx={{ color: colors.secondary[500], fontSize: "16px" }}> Redes sociales</Typography>
                     <Box display="flex" alignContent="center" justifyContent="center" >
                         <Link to="https://github.com/Arthur2399/arthurChavez_evaluacion" target="_blank" rel="noopener noreferrer">
@@ -100,11 +98,15 @@ export const Layout = ({ children }) => {
                 width="100%"
                 sx={{
                     display: 'flex',
-                    justifyContent: 'space-between',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
                     alignItems: 'center',
                     background: colors.secondary[500],
                 }}>
+                <Typography variant="h6" mb="5px" color="white"><strong>Realizado por:</strong> Ing Arthur Chavez Mora</Typography>
+                <Typography variant="h6" mb="5px" color="white">© 2023 Actuaria Consultores SA</Typography>
             </Box>
         </Box>
     )
 }
+    

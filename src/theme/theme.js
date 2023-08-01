@@ -84,7 +84,7 @@ export const themeSettings = () => {
             fontSize: 12,
             h1: {
                 fontFamily: ["Roboto", "sans-serif"].join(","),
-                fontSize: 40,
+                fontSize: 36,
             },
             h2: {
                 fontFamily: ["Roboto", "sans-serif"].join(","),
