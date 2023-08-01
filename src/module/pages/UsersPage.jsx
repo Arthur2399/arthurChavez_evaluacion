@@ -1,42 +1,17 @@
-import { useEffect, useMemo, useState } from "react";
 import { Box, Pagination, useMediaQuery } from "@mui/material";
 import { CardUser, LoadingSpinner } from "../components";
-import { useUserStore } from "../../store";
+import { useUserPage } from "../hooks";
 
 export const UsersPage = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
 
-  const { users, isLoading, search, startLoadUsers } = useUserStore();
   const isNonMobile = useMediaQuery("(min-width:1005px)");
-
-  const userFilter = useMemo(() => {
-    if (search == null) return users;
-    const filters = users.filter(
-      (user) =>
-        user?.first_name.toLowerCase().includes(search?.toLowerCase()) ||
-        user?.last_name.toLowerCase().includes(search?.toLowerCase())
-    );
-    return filters;
-  }, [search, users]);
-
-  const handlePageChange = (event, page) => {
-    setCurrentPage(page);
-  };
-
-  // Start loading users
-  useEffect(() => {
-    startLoadUsers();
-  }, []);
-
-  // Reset currentPage to 1 whenever search changes
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [search]);
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = userFilter.slice(indexOfFirstItem, indexOfLastItem);
+  const { 
+    isLoading,
+    currentItems,
+    userFilter,
+    itemsPerPage,
+    currentPage,
+    handlePageChange } = useUserPage();
 
   return (
     <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" sx={{ mt: "125px" }}>
