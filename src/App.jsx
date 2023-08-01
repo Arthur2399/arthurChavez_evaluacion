@@ -1,10 +1,12 @@
-import { Layout } from './module';
+import { Layout, UsersPage } from './module';
 import { AppTheme } from './theme';
 
 export const App = () => {
     return (
         <AppTheme>
-            <Layout />
+            <Layout>
+                <UsersPage/>
+            </Layout>
         </AppTheme>
     )
 }

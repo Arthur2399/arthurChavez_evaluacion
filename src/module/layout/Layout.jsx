@@ -45,7 +45,7 @@ export const Layout = ({ children }) => {
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
                     }}>
-                    <Typography variant="h1" color="white" sx={{ fontWeight: 'bold' }}>Buscador de usuarios</Typography>
+                    <Typography variant="h1" color="white">Buscador de usuarios</Typography>
                     <Box
                         width="100%"
                         display="flex"
