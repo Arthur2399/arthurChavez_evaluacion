@@ -1,16 +1,28 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import { Box, IconButton, InputBase, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material"
 import SearchIcon from "@mui/icons-material/Search";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import LanguageIcon from '@mui/icons-material/Language';
+
 import { tokens } from "../../theme";
+import { useUserStore } from "../../store";
 
 export const Layout = ({ children }) => {
+    const [search, setSearch] = useState('');
+    const { startSearchUsers } = useUserStore();
+
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const isNonMobile = useMediaQuery("(min-width:980px)");
-    
+
+    const onSubmitUserSearch = (event) => {
+        event.preventDefault();
+        startSearchUsers(search)
+    }
+
     return (
         <Box
             height="100vh"
@@ -26,10 +38,10 @@ export const Layout = ({ children }) => {
                 height="130px"
                 width="100%"
                 sx={{
-                    position:'fixed',
+                    position: 'fixed',
                     zIndex: 100,
                     display: 'flex',
-                    justifyContent:  isNonMobile ? 'space-between' : 'center',
+                    justifyContent: isNonMobile ? 'space-between' : 'center',
                     alignItems: 'center',
                     background: colors.primary[500],
                 }}>
@@ -51,25 +63,29 @@ export const Layout = ({ children }) => {
                         alignItems: 'center',
                     }}>
                     <Typography variant="h1" color="white">Buscador de usuarios</Typography>
-                    <Box
-                        width="100%"
-                        display="flex"
-                        backgroundColor={colors.primary[400]}
-                        borderRadius="3px"
-                        padding="5px"
-                        sx={{ cursor: 'pointer', userSelect: 'none', }}
-                    >
-                        <InputBase
-                            placeholder="Buscar..."
-                            sx={{ ml: 1, flex: 1, color: "white", fontSize: '18px', }}
-                        />
-                        <IconButton type="button" sx={{ p: 1 }}>
-                            <SearchIcon sx={{ color: 'white' }} />
-                        </IconButton>
-                    </Box>
+                    <form onSubmit={onSubmitUserSearch}>
+                        <Box
+                            width="100%"
+                            display="flex"
+                            backgroundColor={colors.primary[400]}
+                            borderRadius="3px"
+                            padding="5px"
+                            sx={{ cursor: 'pointer', userSelect: 'none', }}
+                        >
+                            <InputBase
+                                placeholder="Buscar..."
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                sx={{ ml: 1, flex: 1, color: "white", fontSize: '18px', }}
+                                />
+                            <IconButton type="submit" sx={{ p: 1 }}>
+                                <SearchIcon sx={{ color: 'white' }} />
+                            </IconButton>
+                        </Box>
+                    </form>
                 </Box>
 
-                <Box width='300px' textAlign="center" sx={{display: isNonMobile ? '' : 'none'}}>
+                <Box width='300px' textAlign="center" sx={{ display: isNonMobile ? '' : 'none' }}>
                     <Typography variant="h6" sx={{ color: colors.secondary[500], fontSize: "16px" }}> Redes sociales</Typography>
                     <Box display="flex" alignContent="center" justifyContent="center" >
                         <Link to="https://github.com/Arthur2399/arthurChavez_evaluacion" target="_blank" rel="noopener noreferrer">
@@ -108,10 +124,9 @@ export const Layout = ({ children }) => {
                     alignItems: 'center',
                     background: colors.secondary[500],
                 }}>
-                <Typography variant="h6" mb="5px" color="white"mt={2}><strong>Realizado por:</strong> Ing Arthur Chavez Mora</Typography>
+                <Typography variant="h6" mb="5px" color="white" mt={2}><strong>Realizado por:</strong> Ing Arthur Chavez Mora</Typography>
                 <Typography variant="h6" mb="5px" color="white">© 2023 Actuaria Consultores SA</Typography>
             </Box>
         </Box>
     )
 }
-    

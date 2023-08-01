@@ -4,12 +4,17 @@ export const userSlice = createSlice({
     name: 'users',
     initialState: {
         isLoading: false,
+        search:null,
         users: [],
         errorMessage: null,
     },
     reducers: {
         onIsloadingUsers: (state) => {
             state.isLoading = true;
+        },
+        onSearchUsers: (state, { payload }) => {
+            state.isLoading = false;
+            state.search = payload
         },
         onLoadUsers: (state, { payload = [] }) => {
             state.isLoading = false;
@@ -25,5 +30,6 @@ export const userSlice = createSlice({
 export const {
     onIsloadingUsers,
     onLoadUsers,
+    onSearchUsers,
     onSendErrorMessageUsers,
 } = userSlice.actions;

@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux"
-import { onIsloadingUsers, onLoadUsers, onSendErrorMessageUsers } from "../slices";
+import { onIsloadingUsers, onLoadUsers, onSearchUsers, onSendErrorMessageUsers } from "../slices";
 import { apiConfig } from "../../api/apiConfig";
 
 export const useUserStore = () => {
 
-    const { isLoading, users, errorMessage } = useSelector(state => state.users);
+    const { isLoading, users,search, errorMessage } = useSelector(state => state.users);
     const dispatch = useDispatch();
 
     const startLoadUsers = async () =>{
@@ -18,14 +18,20 @@ export const useUserStore = () => {
         }
     }
 
+    const startSearchUsers =  (search) =>{
+        dispatch(onSearchUsers(search));
+        
+    }
 
     return {
         /* Attributes */
         isLoading,
         users,
         errorMessage,
+        search, 
 
         /* Methods */
         startLoadUsers,
+        startSearchUsers,
     }
 }
