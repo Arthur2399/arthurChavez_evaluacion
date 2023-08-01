@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Box, IconButton, InputBase, Tooltip, Typography, useTheme } from "@mui/material"
+import { Box, IconButton, InputBase, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material"
 import SearchIcon from "@mui/icons-material/Search";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -9,6 +9,8 @@ import { tokens } from "../../theme";
 export const Layout = ({ children }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const isNonMobile = useMediaQuery("(min-width:980px)");
+    
     return (
         <Box
             height="100vh"
@@ -21,11 +23,13 @@ export const Layout = ({ children }) => {
             }}>
             <Box
                 variant="header"
-                height="150px"
+                height="130px"
                 width="100%"
                 sx={{
+                    position:'fixed',
+                    zIndex: 100,
                     display: 'flex',
-                    justifyContent: 'space-between',
+                    justifyContent:  isNonMobile ? 'space-between' : 'center',
                     alignItems: 'center',
                     background: colors.primary[500],
                 }}>
@@ -34,6 +38,7 @@ export const Layout = ({ children }) => {
                         width: '300px',
                         marginTop: '-15px',
                         filter: 'grayscale(100%) brightness(0%)',
+                        display: isNonMobile ? '' : 'none',
                     }}
                 />
                 <Box
@@ -64,7 +69,7 @@ export const Layout = ({ children }) => {
                     </Box>
                 </Box>
 
-                <Box width='300px' textAlign="center">
+                <Box width='300px' textAlign="center" sx={{display: isNonMobile ? '' : 'none'}}>
                     <Typography variant="h6" sx={{ color: colors.secondary[500], fontSize: "16px" }}> Redes sociales</Typography>
                     <Box display="flex" alignContent="center" justifyContent="center" >
                         <Link to="https://github.com/Arthur2399/arthurChavez_evaluacion" target="_blank" rel="noopener noreferrer">
@@ -94,7 +99,7 @@ export const Layout = ({ children }) => {
             {children}
             <Box
                 variant="footer"
-                height="100px"
+                height="150px"
                 width="100%"
                 sx={{
                     display: 'flex',
@@ -103,7 +108,7 @@ export const Layout = ({ children }) => {
                     alignItems: 'center',
                     background: colors.secondary[500],
                 }}>
-                <Typography variant="h6" mb="5px" color="white"><strong>Realizado por:</strong> Ing Arthur Chavez Mora</Typography>
+                <Typography variant="h6" mb="5px" color="white"mt={2}><strong>Realizado por:</strong> Ing Arthur Chavez Mora</Typography>
                 <Typography variant="h6" mb="5px" color="white">© 2023 Actuaria Consultores SA</Typography>
             </Box>
         </Box>
