@@ -1,36 +1,39 @@
-import { Box, Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material"
+import { Box, Card, CardActionArea, CardContent, Typography } from "@mui/material"
 
-export const CardUser = () => {
+export const CardUser = ({first_name,last_name, email,phone_number, avatar, date_of_birth, gender,employment, address, subscription}) => {
     return (
         <Card sx={{ maxWidth: 450 }}>
             <CardActionArea>
                 <Box display="flex" alignItems="center" justifyContent="center" width="100%" height="100%">
                 <img 
-                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29uJTIwZmFjZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" 
+                    src={avatar} 
                     alt="user" 
                     style={{ width: '180px', height: '220px', objectFit:'cover' }}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" mb={2} textAlign="center" >
-                        Mishel Solis
+                        {`${first_name} ${last_name}`}
                     </Typography>
                     <Typography variant="body2" sx={{fontSize:"14px", mb:"4px"}} color="text.secondary">
-                    <strong>Email:</strong> mishelsolis@gmail.com
+                    <strong>Email:</strong> {email}
                     </Typography>
                     <Typography variant="body2" sx={{fontSize:"14px", mb:"4px"}} color="text.secondary">
-                    <strong>Celular:</strong> 0997106357
+                    <strong>Género:</strong> {gender}
                     </Typography>
                     <Typography variant="body2" sx={{fontSize:"14px", mb:"4px"}} color="text.secondary">
-                    <strong>Fech Nacimiento:</strong> 23 de junio de 1999
+                    <strong>Celular:</strong> {phone_number}
                     </Typography>
                     <Typography variant="body2" sx={{fontSize:"14px", mb:"4px"}} color="text.secondary">
-                       <strong>Cargo:</strong> Asesor comercial
+                    <strong>Fech Nacimiento:</strong> {date_of_birth}
                     </Typography>
                     <Typography variant="body2" sx={{fontSize:"14px", mb:"4px"}} color="text.secondary">
-                       <strong>Dirección:</strong> Quitumbe Ñan
+                       <strong>Cargo:</strong> {employment.title}	
                     </Typography>
                     <Typography variant="body2" sx={{fontSize:"14px", mb:"4px"}} color="text.secondary">
-                       <strong>Suscripción:</strong> Gold
+                       <strong>Dirección:</strong> {address.street_address}
+                    </Typography>
+                    <Typography variant="body2" sx={{fontSize:"14px", mb:"4px"}} color="text.secondary">
+                       <strong>Suscripción:</strong> {subscription.plan}
                     </Typography>
                 </CardContent>
                 </Box>
