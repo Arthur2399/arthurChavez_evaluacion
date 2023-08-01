@@ -1,5 +1,9 @@
-import { Box, IconButton, InputBase, Typography, useTheme } from "@mui/material"
+import { Link } from "react-router-dom";
+import { Box, IconButton, InputBase, Tooltip, Typography, useTheme } from "@mui/material"
 import SearchIcon from "@mui/icons-material/Search";
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import LanguageIcon from '@mui/icons-material/Language';
 import { tokens } from "../../theme";
 
 export const Layout = ({ children }) => {
@@ -62,8 +66,31 @@ export const Layout = ({ children }) => {
 
                 </Box>
 
-                {/* TODO RESPOSITORIO DEL GITHUB */}
-                <Box width='280px'>
+                <Box width='280px' textAlign="center">
+                    <Typography variant="h6" sx={{ color: colors.secondary[500], fontSize: "16px" }}> Redes sociales</Typography>
+                    <Box display="flex" alignContent="center" justifyContent="center" >
+                        <Link to="https://github.com/Arthur2399/arthurChavez_evaluacion" target="_blank" rel="noopener noreferrer">
+                            <Tooltip title="Repositorio de este proyecto">
+                                <IconButton sx={{ padding: "10px" }}>
+                                    <GitHubIcon sx={{ width: "30px", height: "30px", color: colors.secondary[500] }} />
+                                </IconButton>
+                            </Tooltip>
+                        </Link>
+                        <Link to="https://www.linkedin.com/company/actuariaconsultores/" target="_blank" rel="noopener noreferrer">
+                            <Tooltip title="LinkedIn">
+                                <IconButton sx={{ padding: "10px" }}>
+                                    <LinkedInIcon sx={{ width: "30px", height: "30px", color: colors.secondary[500] }} />
+                                </IconButton>
+                            </Tooltip>
+                        </Link>
+                        <Link to="https://actuaria.com.ec/es/" target="_blank" rel="noopener noreferrer">
+                            <Tooltip title="Sitio web">
+                                <IconButton sx={{ padding: "10px" }}>
+                                    <LanguageIcon sx={{ width: "30px", height: "30px", color: colors.secondary[500] }} />
+                                </IconButton>
+                            </Tooltip>
+                        </Link>
+                    </Box>
                 </Box>
             </Box>
             {children}
