@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Box, IconButton, InputBase, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material"
@@ -16,12 +16,12 @@ export const Layout = ({ children }) => {
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    const isNonMobile = useMediaQuery("(min-width:980px)"); //Responsive Desing
+    const isNonMobile = useMediaQuery("(min-width:1026px)"); //Responsive Desing
 
-    const onSubmitUserSearch = (event) => {
-        event.preventDefault();
-        startSearchUsers(search)  //Pass lookup value to redux state to use in another component
-    }
+    useEffect(() => {
+        startSearchUsers(search); //Pass lookup value to redux state to use in another component
+    }, [search])
+    
 
     return (
         <Box
@@ -61,10 +61,9 @@ export const Layout = ({ children }) => {
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
                     }}>
-                    <Typography variant="h1" color={colors.secondary[500]}> <strong>Buscador de usuarios</strong></Typography>
-                    <form onSubmit={onSubmitUserSearch}>
+                    <Typography variant={isNonMobile ? 'h1' :'h3'} color={colors.secondary[500]}> <strong>Buscador de usuarios</strong></Typography>
                         <Box
-                            width="500px"
+                            width="100%"
                             display="flex"
                             backgroundColor={colors.grey[500]}
                             borderRadius="50px"
@@ -81,7 +80,6 @@ export const Layout = ({ children }) => {
                                 <SearchIcon  />
                             </IconButton>
                         </Box>
-                    </form>
                 </Box>
 
                 <Box width='300px' textAlign="center" sx={{ display: isNonMobile ? '' : 'none' }}>
