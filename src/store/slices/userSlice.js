@@ -4,8 +4,8 @@ export const userSlice = createSlice({
     name: 'users',
     initialState: {
         isLoading: false,
-        search:null,
-        users: [],
+    search:null, // Value of search
+        users: [], //Array of users
         errorMessage: null,
     },
     reducers: {

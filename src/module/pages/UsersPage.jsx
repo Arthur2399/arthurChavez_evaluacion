@@ -4,14 +4,15 @@ import { useUserPage } from "../hooks";
 
 export const UsersPage = () => {
 
-  const isNonMobile = useMediaQuery("(min-width:1005px)");
+  const isNonMobile = useMediaQuery("(min-width:1005px)");  /* Responsive Desing */
+
   const { 
     isLoading,
     currentItems,
     userFilter,
     itemsPerPage,
     currentPage,
-    handlePageChange } = useUserPage();
+    handlePageChange } = useUserPage();  /* Logic of the whole component */
 
   return (
     <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" sx={{ mt: "125px" }}>
@@ -22,7 +23,7 @@ export const UsersPage = () => {
         gap="30px"
         gridTemplateColumns="repeat(2, minmax(0, 1fr))"
         sx={{
-          "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+          "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },/*  Control of only two columns until isNonMobile changes */
         }}
       >
         {currentItems.map((user) => (
@@ -35,6 +36,7 @@ export const UsersPage = () => {
         onChange={handlePageChange}
         showFirstButton
         showLastButton
+        color="primary"
         sx={{ mb: "20px" }}
       />
     </Box>

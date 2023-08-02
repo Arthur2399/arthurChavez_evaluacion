@@ -11,7 +11,7 @@ export const useUserStore = () => {
         const userCount = 30;
         dispatch(onIsloadingUsers());
         try {
-            const { data } = await apiConfig.get(`/users?size=${userCount}`);
+            const { data } = await apiConfig.get(`/users?size=${userCount}`); //Method GET
             dispatch(onLoadUsers(data))
         } catch (error) {
             dispatch(onSendErrorMessageUsers(error.message));
@@ -19,8 +19,7 @@ export const useUserStore = () => {
     }
 
     const startSearchUsers =  (search) =>{
-        dispatch(onSearchUsers(search));
-        
+        dispatch(onSearchUsers(search)); //Set value search into redux state
     }
 
     return {
