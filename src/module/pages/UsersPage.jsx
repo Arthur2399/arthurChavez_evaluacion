@@ -1,10 +1,14 @@
-import { Box, Pagination, useMediaQuery } from "@mui/material";
+import { Box, Pagination, useMediaQuery, useTheme } from "@mui/material";
 import { CardUser, LoadingSpinner } from "../components";
 import { useUserPage } from "../hooks";
+import { tokens } from "../../theme";
 
 export const UsersPage = () => {
 
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   const isNonMobile = useMediaQuery("(min-width:1005px)");
+
   const { 
     isLoading,
     currentItems,
@@ -35,6 +39,7 @@ export const UsersPage = () => {
         onChange={handlePageChange}
         showFirstButton
         showLastButton
+        color="primary"
         sx={{ mb: "20px" }}
       />
     </Box>

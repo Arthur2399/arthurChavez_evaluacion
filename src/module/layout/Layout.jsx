@@ -64,9 +64,9 @@ export const Layout = ({ children }) => {
                     <Typography variant="h1" color={colors.secondary[500]}> <strong>Buscador de usuarios</strong></Typography>
                     <form onSubmit={onSubmitUserSearch}>
                         <Box
-                            width="100%"
+                            width="500px"
                             display="flex"
-                            backgroundColor={colors.primary[400]}
+                            backgroundColor={colors.grey[500]}
                             borderRadius="50px"
                             padding="5px"
                             sx={{ cursor: 'pointer', userSelect: 'none', }}
@@ -75,10 +75,10 @@ export const Layout = ({ children }) => {
                                 placeholder="Buscar..."
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
-                                sx={{ ml: 1, flex: 1, color: "white", fontSize: '18px', }}
+                                sx={{ ml: 1, flex: 1, fontSize: '18px', }}
                                 />
                             <IconButton type="submit" sx={{ p: 1 }}>
-                                <SearchIcon sx={{ color: 'white' }} />
+                                <SearchIcon  />
                             </IconButton>
                         </Box>
                     </form>
@@ -89,22 +89,22 @@ export const Layout = ({ children }) => {
                     <Box display="flex" alignContent="center" justifyContent="center" >
                         <Link to="https://github.com/Arthur2399/arthurChavez_evaluacion" target="_blank" rel="noopener noreferrer">
                             <Tooltip title="Repositorio de este proyecto">
-                                <IconButton sx={{ padding: "10px" }}>
-                                    <GitHubIcon sx={{ width: "30px", height: "30px", color: colors.secondary[500] }} />
+                                <IconButton sx={{ padding: "10px",color: colors.secondary[500] , "&:hover": { color:"white", background: colors.primary[400] } }}>
+                                    <GitHubIcon sx={{ width: "30px", height: "30px", }} />
                                 </IconButton>
                             </Tooltip>
                         </Link>
                         <Link to="https://www.linkedin.com/company/actuariaconsultores/" target="_blank" rel="noopener noreferrer">
                             <Tooltip title="LinkedIn">
-                                <IconButton sx={{ padding: "10px" }}>
-                                    <LinkedInIcon sx={{ width: "30px", height: "30px", color: colors.secondary[500] }} />
+                                <IconButton sx={{ padding: "10px",color: colors.secondary[500], "&:hover": { color:"white", background: colors.primary[400] } }}>
+                                    <LinkedInIcon sx={{ width: "30px", height: "30px" }} />
                                 </IconButton>
                             </Tooltip>
                         </Link>
                         <Link to="https://actuaria.com.ec/es/" target="_blank" rel="noopener noreferrer">
                             <Tooltip title="Sitio web">
-                                <IconButton sx={{ padding: "10px" }}>
-                                    <LanguageIcon sx={{ width: "30px", height: "30px", color: colors.secondary[500] }} />
+                                <IconButton sx={{ padding: "10px", color: colors.secondary[500], "&:hover": { color:"white", background: colors.primary[400] } }}>
+                                    <LanguageIcon sx={{ width: "30px", height: "30px" }} />
                                 </IconButton>
                             </Tooltip>
                         </Link>
