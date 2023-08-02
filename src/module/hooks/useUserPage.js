@@ -8,15 +8,20 @@ export const useUserPage = () => {
 
     const { users, isLoading, search, startLoadUsers } = useUserStore();
 
-    const userFilter = useMemo(() => {
-        if (search == null) return users;
-        const filters = users.filter(
-            (user) =>
-                user?.first_name.toLowerCase().includes(search?.toLowerCase()) ||
-                user?.last_name.toLowerCase().includes(search?.toLowerCase())
-        );
-        return filters;
-    }, [search, users]);
+const userFilter = useMemo(() => {
+    if (search == null) return users;
+    const filters = users.filter((user) => {
+        const fullName = `${user?.first_name} ${user?.last_name}`;
+        const searchInput = search?.toLowerCase();
+
+        const includesName = fullName.toLowerCase().includes(searchInput);
+        const includesFirstName = user?.first_name.toLowerCase().includes(searchInput);
+        const includesLastName = user?.last_name.toLowerCase().includes(searchInput);
+
+        return includesName || includesFirstName || includesLastName;
+    });
+    return filters;
+}, [search, users]);
 
     const handlePageChange = (event, page) => {
         setCurrentPage(page);
