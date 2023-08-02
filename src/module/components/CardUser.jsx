@@ -48,7 +48,7 @@ export const CardUser = ({ first_name, last_name, email, phone_number, avatar, d
                             <strong>Cargo:</strong> {employment.title}
                         </Typography>
                         <Typography variant="body2" sx={{ fontSize: "14px", mb: "4px", whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: "270px" }}>
-                            <strong>Dirección:</strong> {address.street_address}
+                            <strong>Dirección:</strong> {`${address.city}, ${address.street_address}`}
                         </Typography>
                         <Typography variant="body2" sx={{ fontSize: "14px", mb: "4px" }}>
                             <strong>Suscripción:</strong> {subscription.plan}
