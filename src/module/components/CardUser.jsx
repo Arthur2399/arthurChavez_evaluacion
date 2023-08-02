@@ -21,7 +21,7 @@ export const CardUser = ({ first_name, last_name, email, phone_number, avatar, d
                         <Typography gutterBottom variant="h5" mb={1} textAlign="center" >
                             {`${first_name} ${last_name}`}
                         </Typography>
-                        <Typography variant="body2" sx={{ fontSize: "14px", mb: "4px" }}>
+                        <Typography variant="body2" sx={{ fontSize: "14px", mb: "4px", whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: "270px" }}>
                             <strong>Email:</strong> {email}
                         </Typography>
                         <Typography variant="body2" sx={{ fontSize: "14px", mb: "4px" }}>
@@ -33,7 +33,7 @@ export const CardUser = ({ first_name, last_name, email, phone_number, avatar, d
                         <Typography variant="body2" sx={{ fontSize: "14px", mb: "4px" }}>
                             <strong>Fech nac:</strong> {formattedDate(date_of_birth)}
                         </Typography>
-                        <Typography variant="body2" sx={{ fontSize: "14px", mb: "4px" }}>
+                        <Typography variant="body2" sx={{ fontSize: "14px", mb: "4px", whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: "270px" }}>
                             <strong>Cargo:</strong> {employment.title}
                         </Typography>
                         <Typography variant="body2" sx={{ fontSize: "14px", mb: "4px", whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: "270px" }}>
