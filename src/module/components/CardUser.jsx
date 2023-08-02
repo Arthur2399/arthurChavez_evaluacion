@@ -1,11 +1,18 @@
-import { Box, Card, CardActionArea, CardContent, Typography, useTheme } from "@mui/material"
+import { Box, Card, CardActionArea, CardContent, Typography, useMediaQuery, useTheme } from "@mui/material"
 import { formattedDate } from "../helpers";
 import { tokens } from "../../theme";
+import { useMemo } from "react";
 
 export const CardUser = ({ first_name, last_name, email, phone_number, avatar, date_of_birth, gender, employment, address, subscription }) => {
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const isNonMobile = useMediaQuery("(min-width:1026px)"); //Responsive Desing
+
+    const imageWh = useMemo(() => {
+        if(isNonMobile) return '180px';
+        return '80px';
+    })
 
     return (
         <Card sx={{ maxWidth: 500, height: "220px", color: colors.grey[800], "&:hover": { background: colors.secondary[500], color: "white" } }}>
@@ -14,7 +21,11 @@ export const CardUser = ({ first_name, last_name, email, phone_number, avatar, d
                     <img
                         src={avatar}
                         alt="user"
-                        style={{ width: '180px', height: '180px', objectFit: 'cover' }}
+                        style={{ 
+                            width: imageWh, 
+                            height: imageWh, 
+                            objectFit: 'cover' 
+                        }}
 
                     />
                     <CardContent sx={{ padding: "10px", paddingBottom: "10px !important" }}>
