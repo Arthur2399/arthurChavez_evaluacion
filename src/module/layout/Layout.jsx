@@ -43,13 +43,12 @@ export const Layout = ({ children }) => {
                     display: 'flex',
                     justifyContent: isNonMobile ? 'space-between' : 'center',
                     alignItems: 'center',
-                    background: colors.primary[500],
+                    background: "white",
                 }}>
                 <img src="/logo.png" alt="logo"
                     style={{
                         width: '300px',
                         marginTop: '-15px',
-                        filter: 'grayscale(100%) brightness(0%)',
                         display: isNonMobile ? '' : 'none',
                     }}
                 />
@@ -62,13 +61,13 @@ export const Layout = ({ children }) => {
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
                     }}>
-                    <Typography variant="h1" color="white">Buscador de usuarios</Typography>
+                    <Typography variant="h1" color={colors.secondary[500]}> <strong>Buscador de usuarios</strong></Typography>
                     <form onSubmit={onSubmitUserSearch}>
                         <Box
                             width="100%"
                             display="flex"
                             backgroundColor={colors.primary[400]}
-                            borderRadius="3px"
+                            borderRadius="50px"
                             padding="5px"
                             sx={{ cursor: 'pointer', userSelect: 'none', }}
                         >
