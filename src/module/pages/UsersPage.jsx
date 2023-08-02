@@ -1,13 +1,10 @@
-import { Box, Pagination, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Pagination, useMediaQuery } from "@mui/material";
 import { CardUser, LoadingSpinner } from "../components";
 import { useUserPage } from "../hooks";
-import { tokens } from "../../theme";
 
 export const UsersPage = () => {
 
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
-  const isNonMobile = useMediaQuery("(min-width:1005px)");
+  const isNonMobile = useMediaQuery("(min-width:1005px)");  /* Responsive Desing */
 
   const { 
     isLoading,
@@ -15,7 +12,7 @@ export const UsersPage = () => {
     userFilter,
     itemsPerPage,
     currentPage,
-    handlePageChange } = useUserPage();
+    handlePageChange } = useUserPage();  /* Logic of the whole component */
 
   return (
     <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" sx={{ mt: "125px" }}>
@@ -26,7 +23,7 @@ export const UsersPage = () => {
         gap="30px"
         gridTemplateColumns="repeat(2, minmax(0, 1fr))"
         sx={{
-          "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+          "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },/*  Control of only two columns until isNonMobile changes */
         }}
       >
         {currentItems.map((user) => (

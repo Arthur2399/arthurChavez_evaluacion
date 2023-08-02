@@ -16,11 +16,11 @@ export const Layout = ({ children }) => {
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    const isNonMobile = useMediaQuery("(min-width:980px)");
+    const isNonMobile = useMediaQuery("(min-width:980px)"); //Responsive Desing
 
     const onSubmitUserSearch = (event) => {
         event.preventDefault();
-        startSearchUsers(search)
+        startSearchUsers(search)  //Pass lookup value to redux state to use in another component
     }
 
     return (
